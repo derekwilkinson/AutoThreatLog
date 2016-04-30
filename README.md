@@ -2,13 +2,11 @@
 AutoThreatLog is a set of bash scripts that extract a list of IPs from a log file, check the IPs against specified blacklists, export the results to a text file, and then emails the results to specified receipients. 
 
 ## Requirements
-A Linux environment with bash 
-Syslog (exporting IP history to a log file)
-Mutt (for emailing AutoThreatLog results)
-grep
-blcheck
-autothreatlog
-A file containing IP addresses to check against the blacklists
+1. A Linux environment with bash 
+2. Syslog (exporting IP history to a log file)
+3. Mutt (for emailing AutoThreatLog results)
+4. grep
+5. A file containing IP addresses to check against the blacklists
 
 ## About The Scripts - autothreatlog
 The autothreatlog bash script reads the IP addresses from the log file to a text file. This text file is then checked for duplicates. The resulting data in this text file is then passed to the blcheck script. After the ip data text file has been read, the autothreatlog script will check if the blcheck script created a blacklisted IP log, and then email this file to specified receipients. If the file was not created by the blcheck script, an email stating that no blacklisted IP activity detected is emailed to the speciefied receipients. 
