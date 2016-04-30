@@ -9,7 +9,7 @@ AutoThreatLog is a set of bash scripts that extract a list of IPs from a log fil
 5. A file containing IP addresses to check against the blacklists
 
 ## About The Scripts - autothreatlog
-The autothreatlog bash script reads the IP addresses from the log file to a text file. This text file is then checked for duplicates. The resulting data in this text file is then passed to the blcheck script. After the ip data text file has been read, the autothreatlog script will check if the blcheck script created a blacklisted IP log, and then email this file to specified receipients. If the file was not created by the blcheck script, an email stating that no blacklisted IP activity detected is emailed to the speciefied receipients. 
+The autothreatlog bash script reads the IP addresses from the log file to a text file. This text file is then checked for duplicate addresses. The resulting data in this text file is then passed to the blcheck script. After the ip data text file has been read, the autothreatlog script will check if the blcheck script created a blacklisted IP log, and then email this file to specified receipients. If the file was not created by the blcheck script, an email stating that no blacklisted IP activity detected is emailed to the speciefied receipients. 
 
 ## About The Scripts - blcheck
 The blcheck bash script is a modification of a script created by J65nko on daemonforums (http://daemonforums.org/showthread.php?t=302). It also contains a modification by J.Reilink on saotn.org (https://www.saotn.org/bash-check-ip-address-blacklist-status/). 
