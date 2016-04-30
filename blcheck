@@ -1,0 +1,58 @@
+#!/bin/bash
+###########################################################################
+#Auto Threat Log script by Derek Wilkinson
+#dwilkinson@fisdk12.net derekcwilkinson@gmail.com
+###########################################################################
+
+#Begin Variables
+###########################################################################
+
+#mail receipients (one per line)
+getm="
+"
+
+#log directory
+logdir=""
+
+#log file name
+logfile=""
+
+###########################################################################
+#End Variables
+
+#Begin Script
+###########################################################################
+
+#move to correct directory
+cd $logdir
+
+#Isolate IPs from threat log
+grep -roE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' $logfile > threatlogip.txt
+
+#Remove duplicate IPs
+sort threatlogip.txt | uniq > threatlog.txt
+
+#remove threatlogip file
+rm threatlogip.txt
+
+#clear existing threat log
+ > $logfile
+
+#compare IPs to blacklist in threatlog txt file
+while read x; do
+        blcheck $x
+done < threatlog.txt
+
+#Check if threat file exists. If exists, email threat file. Else send all clear email
+if [ -e "$(date +%m-%d-%y)_potential_threats.txt" ]
+then
+	echo "Attached is the daily threat log file for $(date +%m-%d-%y)" | mutt -a "/var/log/FISD-PA3050/$(date +%m-%d-%y)_potential_threats.txt" -s "DSS Daily Log for $(date +%m-%d-%y)" -- $getm
+else
+	echo "No blacklisted IP activity was detected for $(date +%m-%d-%y)" | mutt -s "DSS Daily Log for $(date +%m-%d-%y)" -- $getm
+fi
+
+#remove threatlog file
+rm threatlog.txt
+
+###########################################################################
+#End Script
