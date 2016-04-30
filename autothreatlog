@@ -46,9 +46,9 @@ done < threatlog.txt
 #Check if threat file exists. If exists, email threat file. Else send all clear email
 if [ -e "$(date +%m-%d-%y)_potential_threats.txt" ]
 then
-	echo "Attached is the daily threat log file for $(date +%m-%d-%y)" | mutt -a "$logdir""$(date +%m-%d-%y)_potential_threats.txt" -s "DSS Daily Log for $(date +%m-%d-%y)" -- $getm
+	echo "Attached is the daily threat log file for $(date +%m-%d-%y)" | mutt -a "$logdir""$(date +%m-%d-%y)_potential_threats.txt" -s "AutoThreatLog Daily Log for $(date +%m-%d-%y)" -- $getm
 else
-	echo "No blacklisted IP activity was detected for $(date +%m-%d-%y)" | mutt -s "DSS Daily Log for $(date +%m-%d-%y)" -- $getm
+	echo "No blacklisted IP activity was detected for $(date +%m-%d-%y)" | mutt -s "AutoThreatLog Daily Log for $(date +%m-%d-%y)" -- $getm
 fi
 
 #remove threatlog file
