@@ -1,7 +1,7 @@
 # AutoThreatLog
 AutoThreatLog is a set of bash scripts that extract a list of IPs from a log file, check the IPs against specified blacklists, export the results to a text file, and then emails the results to specified receipients. 
 
-## Requirements:
+## Requirements
 A Linux environment with bash 
 Syslog (exporting IP history to a log file)
 Mutt (for emailing AutoThreatLog results)
@@ -17,6 +17,6 @@ The autothreatlog bash script reads the IP addresses from the log file to a text
 The blcheck bash script is a modification of a script created by J65nko on daemonforums (http://daemonforums.org/showthread.php?t=302). It also contains a modification by J.Reilink on saotn.org (https://www.saotn.org/bash-check-ip-address-blacklist-status/). 
 The blcheck script receives IP addresses from the autothreatlog script, checks them against the specified blacklists, then returns the list of blacklisted IP addresses to a text file named with the current date (m-d-y_potential_threats.txt). Furthermore, if an IP is detected on a blacklist, information about the IP is passed to the aforementioned text file. This information includes the hostname, organization, country, region, city, post code, and geolocation of the IP address, if available. 
 
-Using The Scripts
+##Using The Scripts
 Copy the two scritps to your /usr/bin/ folder, then run "sudo chmod +x blcheck && chmod +x autothreatlog"
 Add the autothreatlog script to your cronjobs. On Ubuntu Server, this would be done by running "crontab -e" and adding the script to the users cronjob list. For more information on Cron, visit https://help.ubuntu.com/community/CronHowto
