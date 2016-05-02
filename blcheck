@@ -93,7 +93,7 @@ for BL in ${BLISTS} ; do
     #Add IP to file if listed
     if echo $LISTED | grep '127\.'
     then
-      echo "Blacklisted IP" $1 "is blacklisted in" $BL >> "$logDir""$(date +%m-%d-%y)_potential_threats.txt"
+      echo "IP" $1 "is blacklisted in" $BL >> "$logDir""$(date +%m-%d-%y)_potential_threats.txt"
     fi
 
     #Add info of blacklisted IP
