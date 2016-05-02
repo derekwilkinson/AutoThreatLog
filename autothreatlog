@@ -17,6 +17,9 @@ logdir=""
 #log file name
 logfile=""
 
+#Whitelist
+whiteList="whitelist.txt"
+
 ###########################################################################
 #End Variables
 
@@ -38,10 +41,16 @@ rm threatlogip.txt
 #clear existing threat log
  > $logfile
 
+#Check against whitelists
+grep -v -f $whiteList threatlog.txt > threatlogfinal.txt
+
+#remove threatlog file
+rm threatlog.txt
+
 #compare IPs to blacklist in threatlog txt file
 while read x; do
         blcheck $x
-done < threatlog.txt
+done < threatlogfinal.txt
 
 #Check if threat file exists. If exists, email threat file. Else send all clear email
 if [ -e "$(date +%m-%d-%y)_potential_threats.txt" ]
