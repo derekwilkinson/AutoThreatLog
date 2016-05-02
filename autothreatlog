@@ -60,8 +60,8 @@ else
 	echo "No blacklisted IP activity was detected for $(date +%m-%d-%y)" | mutt -s "AutoThreatLog Daily Log for $(date +%m-%d-%y)" -- $getm
 fi
 
-#remove threatlog file
-rm threatlog.txt
+#remove threatlogfinal file
+rm threatlogfinal.txt
 
 ###########################################################################
 #End Script
