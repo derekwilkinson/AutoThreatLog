@@ -38,9 +38,6 @@ sort threatlogip.txt | uniq > threatlog.txt
 #remove threatlogip file
 rm threatlogip.txt
 
-#clear existing threat log
- > $logfile
-
 #Check against whitelists
 grep -v -f $whiteList threatlog.txt > threatlogfinal.txt
 
@@ -62,6 +59,9 @@ fi
 
 #remove threatlogfinal file
 rm threatlogfinal.txt
+
+#clear existing threat log
+ > $logfile
 
 ###########################################################################
 #End Script
