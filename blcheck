@@ -106,6 +106,8 @@ for BL in ${BLISTS} ; do
       curl -is ipinfo.io/$1 | grep "city" >> "$logDir""$(date +%m-%d-%y)_potential_threats.txt"
       curl -is ipinfo.io/$1 | grep "postal" >> "$logDir""$(date +%m-%d-%y)_potential_threats.txt"
       curl -is ipinfo.io/$1 | grep "loc" >> "$logDir""$(date +%m-%d-%y)_potential_threats.txt"
+      echo "Traffic Details:" >> "$logDir""$(date +%m-%d-%y)_potential_threats.txt"
+      grep "$1" /var/log/FISD-PA3050/threat.log >> "$logDir""$(date +%m-%d-%y)_potential_threats.txt"      
       echo "" >> "$logDir""$(date +%m-%d-%y)_potential_threats.txt"
       echo "" >> "$logDir""$(date +%m-%d-%y)_potential_threats.txt"
     fi
